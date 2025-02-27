@@ -25,5 +25,13 @@ export default defineNuxtConfig({
     },
   },
 
+  runtimeConfig: {
+    public: {
+      i18n: {
+        baseUrl: '',
+      },
+    },
+  },
+
   compatibilityDate: '2025-02-27'
 })
