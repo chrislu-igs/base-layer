@@ -1,9 +1,6 @@
 <script lang="ts" setup>
 import { useAsyncData } from '#app/composables/asyncData'
-import { useMouse } from '@vueuse/core'
-import { useLangApi, useLangFetchErrorApi, useProjectErrorApi, useThirdPartyApi, useThirdPartyErrorApi } from '#imports'
-import { useLogger } from '#imports'
-import { HelloWorld } from '#components'
+import { useLangApi, useLangFetchErrorApi, useLogger, useProjectErrorApi, useThirdPartyApi, useThirdPartyErrorApi } from '#imports'
 
 const logger = useLogger().withTag('home page')
 const config = useRuntimeConfig()
@@ -13,8 +10,6 @@ type ThirdPartyDataPost = {
   title: string
   body: string
 }
-const { x, y } = useMouse()
-
 // 頁面級別的 API，供整個頁面使用，可使用多個 $fetch API 組成
 const { data, refresh } = await useAsyncData<ThirdPartyDataPost>('dataKey', async () => {
   const res = await useThirdPartyApi() as ThirdPartyDataPost || undefined
@@ -47,12 +42,7 @@ async function openThirdPartyError() {
 <template>
   <UContainer>
     <UCard class="mt-10">
-      <template #header>
-        <div class="flex justify-between">
-          <h1>Welcome to Nuxt UI Starter</h1>
-          <ColorScheme><USelect v-model="$colorMode.preference" :options="['system', 'light', 'dark']" /></ColorScheme>
-        </div>
-      </template>
+      <h2>UseApi</h2>
       <div class="flex flex-col items-center space-y-4">
         <UButton icon="i-heroicons-book-open" @click="openNormal">
           Trigger API
@@ -69,9 +59,6 @@ async function openThirdPartyError() {
         <UButton icon="i-heroicons-book-open" @click="openThirdPartyError">
           Trigger API With ThirdParty Error
         </UButton>
-        <div>
-          <p>Mouse Position: {{ x }}, {{ y }}</p>
-        </div>
         <div v-if="data">
           <UButton icon="i-heroicons-book-open" @click="refresh">
             Refresh Data
@@ -82,11 +69,6 @@ async function openThirdPartyError() {
           <p>Content: {{ data.body }}</p>
         </div>
       </div>
-    </UCard>
-    <UCard class="mb-10 h-[1000px]">
-      <div>test</div>
-      <HelloWorld />
-      {{ config.public }}
     </UCard>
   </UContainer>
 </template>

@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/fonts',
     '@vueuse/nuxt',
+    '@nuxtjs/seo',
   ],
   future: {
     compatibilityVersion: 4,
@@ -19,5 +20,25 @@ export default defineNuxtConfig({
       apiBaseUrl: '',
       deployEnv: '',
     },
+  },
+
+  // seo module options 預設全關閉
+  ogImage: {
+    enabled: false,
+  },
+  sitemap: {
+    enabled: false,
+  },
+  robots: {
+    enabled: false,
+  },
+  seo: { // seo utils
+    enabled: false,
+  },
+  schemaOrg: {
+    enabled: false,
+  },
+  linkChecker: {
+    enabled: false,
   },
 })

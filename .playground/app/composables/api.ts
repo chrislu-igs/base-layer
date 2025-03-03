@@ -2,10 +2,9 @@ import { useRuntimeConfig } from '#app/nuxt'
 
 // 以下為個別 API 的使用範例
 
-
 export async function useLangApi(langCode: string) {
   const config = useRuntimeConfig()
-  const langUrl = `${config.public.i18n.baseUrl}/Language/${langCode}?GroupIds[]=TOURNWEB`
+  const langUrl = `${config.public.i18nBaseUrl}/Language/${langCode}?GroupIds[]=TOURNWEB`
   const res = await usePublicApi<Record<string, any>>(langUrl, {}, { alert: true })
   return res
 }

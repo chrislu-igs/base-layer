@@ -15,6 +15,13 @@ useHeadSafe({
 </script>
 
 <template>
-  <slot />
-  <UNotifications />
+  <div class="m-auto py-10 sm:px-8">
+    <main class="prose mx-auto max-w-none px-4">
+      <slot>
+        <h1 class="text-2xl">
+          Page not found
+        </h1>
+      </slot>
+    </main>
+  </div>
 </template>

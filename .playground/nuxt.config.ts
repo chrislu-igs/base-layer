@@ -15,7 +15,12 @@ export default defineNuxtConfig({
   },
 
   extends: ['..'],
-  modules: ['@nuxt/eslint'],
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/content',
+  ],
+  colorMode: { classSuffix: '' },
+  css: ['~/assets/css/main.css'],
 
   eslint: {
     config: {
@@ -27,11 +32,23 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      i18n: {
-        baseUrl: '',
+      i18nBaseUrl: '',
+    },
+  },
+
+  content: {
+    build: {
+      markdown: {
+        highlight: {
+          // See the available themes on https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
+          theme: {
+            dark: 'material-theme-lighter',
+            default: 'material-theme-lighter',
+          },
+        },
       },
     },
   },
 
-  compatibilityDate: '2025-02-27'
+  compatibilityDate: '2025-02-27',
 })
